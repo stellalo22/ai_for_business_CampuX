@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CUHKSZ ReMarket | Campus Marketplace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Libre+Baskerville:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./subpages.css" />
+  </head>
+  <body class="modern-theme">
+    <div class="app-container">
+      <header class="navbar">
+        <div class="navbar-brand">
+          <span class="logo-mark">R</span>
+          <div class="brand-copy">
+            <p class="mini-label" id="brandEyebrow">Campus Marketplace</p>
+            <span class="logo-text">CUHKSZ ReMarket</span>
+          </div>
+        </div>
+
+        <div class="navbar-search">
+          <input
+            id="searchInput"
+            type="search"
+            data-i18n-placeholder="searchPlaceholder"
+            placeholder="Search items, courses, or sellers..."
+          />
+        </div>
+
+        <div class="navbar-actions">
+          <div class="language-switcher" role="group" aria-label="Language switcher">
+            <button class="lang-btn active" id="langEn" type="button">EN</button>
+            <button class="lang-btn" id="langZh" type="button">中</button>
+          </div>
+          <button class="nav-btn ghost" id="loginLink" type="button">Log in</button>
+          <button class="nav-btn ghost" id="chatLink" type="button">Messages</button>
+          <div class="verified-badge" id="studentVerifiedButton" title="Student Verified">✓ Verified</div>
+          <button class="btn-primary" id="jumpToSell">+ Sell Item</button>
+        </div>
+      </header>
+
+      <main class="main-content">
+        <section class="hero-minimal">
+          <div class="hero-inner">
+            <span class="hero-kicker" id="heroTag">Buy smarter. Sell faster. Keep value on campus.</span>
+            <h1 id="heroTitle">Buy smarter. Sell faster.</h1>
+            <p id="heroDescription">
+              The trusted second-hand marketplace exclusively for the CUHK-Shenzhen community.
+            </p>
+            <div class="hero-buttons">
+              <button class="btn-primary large" id="exploreNow">Explore Listings</button>
+              <button class="btn-secondary large" id="joinNowLink" type="button">Join Market</button>
+            </div>
+            <div class="hero-stats">
+              <span><strong>1,280+</strong> <em id="heroStat1">Active listings</em></span>
+              <span><strong>94%</strong> <em id="heroStat2">Verified students</em></span>
+              <span><strong>24h</strong> <em id="heroStat3">Avg. offer time</em></span>
+            </div>
+          </div>
+          <div class="hero-aside">
+            <div class="hero-campus-card">
+              <p class="mini-label" id="galleryEyebrow">Campus mood</p>
+              <h3 id="galleryTitle">Built around the places students already know</h3>
+              <p id="galleryDesc">
+                Library steps, Shaw Square and dorm lobbies become natural pickup anchors.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="marketplace-core" id="marketplace">
+          <div class="section-intro">
+            <div>
+              <p class="mini-label" id="marketplaceEyebrow">Marketplace</p>
+              <h2 id="marketplaceTitle">Browse campus listings</h2>
+            </div>
+            <p id="marketplaceDesc">
+              Search, filter, favorite, add to cart, open detail pages and continue the conversation in chat.
+            </p>
+          </div>
+
+          <div class="filter-bar">
+            <div class="filter-group">
+              <select id="categoryFilter" class="filter-select">
+                <option value="All">All Categories</option>
+              </select>
+              <select id="conditionFilter" class="filter-select">
+                <option value="All">Any Condition</option>
+                <option value="Like New">Like New</option>
+                <option value="Good">Good</option>
+                <option value="Fair">Fair</option>
+              </select>
+              <select id="sortFilter" class="filter-select">
+                <option value="default">Recommended</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+                <option value="rating-desc">Top Rated Sellers</option>
+              </select>
+            </div>
+
+            <div class="filter-group slider-group">
+              <label for="priceRange"><span id="maxPriceLabel">Max:</span> <strong id="priceValue">3000</strong> RMB</label>
+              <input id="priceRange" type="range" min="20" max="3000" step="10" value="3000" />
+            </div>
+
+            <div class="filter-actions">
+              <button class="btn-ghost small" id="showFavorites">Favorites</button>
+              <button class="btn-ghost small" id="resetFilters">Reset</button>
+              <span class="results-count" id="resultsCount">0 items</span>
+            </div>
+          </div>
+
+          <div class="marketplace-grid-layout">
+            <div class="listing-board" id="listingGrid"></div>
+
+            <aside class="sidebar-panels">
+              <div class="panel clean-cart">
+                <div class="panel-header">
+                  <h3 id="cartTitle">Your Cart</h3>
+                  <span class="badge" id="cartCount">0</span>
+                </div>
+                <div id="cartItems" class="cart-items-minimal"></div>
+                <div class="cart-summary">
+                  <div class="total-row">
+                    <span id="totalLabel">Total</span>
+                    <strong id="cartTotal">RMB 0</strong>
+                  </div>
+                  <button class="btn-primary full-width" id="checkoutButton">Checkout</button>
+                  <p class="status-text" id="checkoutStatus">Reserve for campus handoff.</p>
+                </div>
+              </div>
+
+              <div class="panel clean-messages">
+                <div class="panel-header">
+                  <h3 id="messagesTitle">Recent Messages</h3>
+                </div>
+                <div class="message-snippets">
+                  <div class="snippet">
+                    <strong>Ada Li</strong>
+                    <p>Meet outside library at 6:30 PM?</p>
+                  </div>
+                  <div class="snippet">
+                    <strong>Jayden Wong</strong>
+                    <p>I can bundle the calculator...</p>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="seller-studio" id="sellSection">
+          <div class="studio-header">
+            <div>
+              <p class="mini-label" id="sellEyebrow">Seller Studio</p>
+              <h2 id="sellTitle">Post a Listing</h2>
+            </div>
+            <p id="sellDesc">Smart posting with AI formatting assistance.</p>
+          </div>
+
+          <div class="studio-content">
+            <form id="listingForm" class="modern-form">
+              <div class="form-row">
+                <div class="form-group flex-2">
+                  <label for="titleInput" id="itemTitleLabel">Item Title</label>
+                  <input type="text" id="titleInput" placeholder="e.g. Macroeconomics textbook set" required />
+                </div>
+                <div class="form-group flex-1">
+                  <label for="priceInput" id="priceLabelMain">Price (RMB)</label>
+                  <input type="number" id="priceInput" min="1" placeholder="120" required />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group flex-1">
+                  <label for="formCategory" id="categoryLabelMain">Category</label>
+                  <select id="formCategory" required>
+                    <option value="">Select...</option>
+                    <option>Textbooks</option>
+                    <option>Electronics</option>
+                    <option>Dorm Essentials</option>
+                    <option>Fashion</option>
+                    <option>Club & Sports</option>
+                  </select>
+                </div>
+                <div class="form-group flex-1">
+                  <label for="formCondition" id="conditionLabelMain">Condition</label>
+                  <select id="formCondition" required>
+                    <option value="">Select...</option>
+                    <option>Like New</option>
+                    <option>Good</option>
+                    <option>Fair</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group flex-1">
+                  <label for="sellerInput" id="sellerNameLabel">Seller Name</label>
+                  <input type="text" id="sellerInput" placeholder="Your name" required />
+                </div>
+                <div class="form-group flex-1">
+                  <label for="locationInput" id="pickupPointLabel">Pick-up Point</label>
+                  <input type="text" id="locationInput" placeholder="e.g. TA building lobby" required />
+                </div>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="descriptionInput" id="descriptionLabel">Description</label>
+                <textarea id="descriptionInput" rows="4" placeholder="Add course tags, condition details..." required></textarea>
+              </div>
+
+              <div class="form-footer">
+                <div class="ai-helper">
+                  <span class="ai-icon">AI</span>
+                  <span id="aiNote">Use AI to generate a polished English description.</span>
+                </div>
+                <div class="action-buttons">
+                  <button type="button" class="btn-secondary" id="generateAiCopy">AI Draft</button>
+                  <button type="submit" class="btn-primary" id="publishButton">Publish</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <section class="strategy-section" id="platformOverview">
+          <div class="section-intro">
+            <div>
+              <p class="mini-label">Platform Strategy</p>
+              <h2>From campus trading tool to AI-powered commerce hub</h2>
+            </div>
+            <p>
+              This concept combines student-to-student resale, merchant advertising,
+              verified trust, and AI-assisted operations in one focused campus product.
+            </p>
+          </div>
+
+          <div class="flow-shell">
+            <div class="flow-step">
+              <span>01</span>
+              <h3>Verified users enter</h3>
+              <p>Students, advertisers, tutors, recruiters and nearby merchants join with role-based access.</p>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+              <span>02</span>
+              <h3>Items or ads are created</h3>
+              <p>Physical goods, digital services, job posts and sponsored campaigns all enter structured flows.</p>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+              <span>03</span>
+              <h3>AI improves quality</h3>
+              <p>AI helps with copy, pricing, review, matching, first-response customer service and push targeting.</p>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+              <span>04</span>
+              <h3>Meetup and follow-up</h3>
+              <p>Users coordinate time and location, receive reminders, complete the handoff, and leave ratings.</p>
+            </div>
+          </div>
+
+          <div class="architecture-grid">
+            <article class="architecture-card">
+              <p class="mini-label">Layer 1</p>
+              <h3>User Layer</h3>
+              <p>Buyers, sellers, advertisers and admins share one identity and credit framework built on campus verification.</p>
+            </article>
+            <article class="architecture-card">
+              <p class="mini-label">Layer 2</p>
+              <h3>Gateway Layer</h3>
+              <p>API gateway, H5 client, mini-app entry and notification channels route every request safely into the platform.</p>
+            </article>
+            <article class="architecture-card">
+              <p class="mini-label">Layer 3</p>
+              <h3>Core Business</h3>
+              <p>Listings, transactions, user center, ad system, ratings, compliance and payment escrow form the product core.</p>
+            </article>
+            <article class="architecture-card">
+              <p class="mini-label">Layer 4</p>
+              <h3>AI Capability</h3>
+              <p>AI fill-in, pricing review, matching engine and RAG support reduce friction while improving trust and efficiency.</p>
+            </article>
+            <article class="architecture-card">
+              <p class="mini-label">Layer 5</p>
+              <h3>Infrastructure</h3>
+              <p>MySQL, Redis, object storage, message queues and analytics keep the platform responsive, traceable and scalable.</p>
+            </article>
+          </div>
+
+          <div class="business-grid">
+            <article class="business-card">
+              <h3>Value Proposition</h3>
+              <ul>
+                <li>Centralized campus marketplace that removes repeated posting and fragmented searching.</li>
+                <li>AI-assisted listing, review, pricing and communication reduce time cost on both sides.</li>
+                <li>Verified trust, ratings and structured meetup flow make transactions feel safer and clearer.</li>
+              </ul>
+            </article>
+            <article class="business-card">
+              <h3>Revenue Stream</h3>
+              <ul>
+                <li>Advertising fees from local merchants, recruiters, agencies and service providers.</li>
+                <li>Paid boosting for urgent sellers who want more visibility.</li>
+                <li>Featured placement and premium campaign tools for campus-facing businesses.</li>
+                <li>Optional deposit and escrow-related service fees for higher-trust transactions.</li>
+              </ul>
+            </article>
+            <article class="business-card">
+              <h3>Exclusive Benefit</h3>
+              <ul>
+                <li>Saves time by concentrating listings, conversations and decision-making in one place.</li>
+                <li>Improves accuracy with AI-generated copy, condition review, pricing reference and targeted matching.</li>
+                <li>Breaks response-time barriers with AI-assisted first replies for merchants and advertisers.</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <template id="listingCardTemplate">
+      <article class="card-item listing-card">
+        <div class="card-image-placeholder listing-visual">
+          <span class="card-badge listing-badge"></span>
+          <button class="btn-heart favorite-button" type="button" aria-label="Save">&#9825;</button>
+        </div>
+        <div class="card-info listing-content">
+          <div class="card-meta-top listing-topline">
+            <span class="text-category listing-category"></span>
+            <span class="text-condition listing-condition"></span>
+          </div>
+          <h3 class="card-title listing-title"></h3>
+          <p class="card-desc truncate listing-description"></p>
+          <div class="listing-meta sr-only">
+            <span class="listing-seller"></span>
+            <span class="listing-rating"></span>
+          </div>
+          <div class="card-tags listing-tags"></div>
+          <div class="card-bottom listing-footer">
+            <div class="price-wrap">
+              <strong class="card-price listing-price"></strong>
+              <span class="card-location listing-location"></span>
+            </div>
+            <div class="card-actions listing-actions">
+              <button class="btn-secondary small details-link" type="button">View</button>
+              <button class="btn-primary small add-cart-button" type="button">Add</button>
+            </div>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <section class="overlay-modal hidden-view" id="authView">
+      <div class="modal-dialog">
+        <button class="btn-close view-back-button" type="button" data-close-view="auth">Close</button>
+        <div class="modal-header">
+          <p class="mini-label" id="authEyebrow">Student Access</p>
+          <h2 id="authTitle">Join ReMarket</h2>
+          <p id="authLead">Use your campus identity to safely trade.</p>
+        </div>
+        <div class="modal-tabs">
+          <button class="tab-btn active" id="loginTab" type="button">Log In</button>
+          <button class="tab-btn" id="registerTab" type="button">Sign Up</button>
+        </div>
+        <div class="modal-body">
+          <form class="auth-form active" id="loginForm">
+            <div class="form-group">
+              <label id="emailLabel" for="loginEmail">Email</label>
+              <input type="email" id="loginEmail" placeholder="name@link.cuhk.edu.cn" required />
+            </div>
+            <div class="form-group">
+              <label id="passwordLabel" for="loginPassword">Password</label>
+              <input type="password" id="loginPassword" placeholder="••••••••" required />
+            </div>
+            <div class="form-group">
+              <label id="studentIdLabel" for="studentId">Student ID</label>
+              <input type="text" id="studentId" placeholder="1155xxxxxx" required />
+            </div>
+            <button class="btn-primary full-width mt-4" type="submit" id="loginSubmit">Continue</button>
+          </form>
+          <form class="auth-form" id="registerForm">
+            <div class="form-group">
+              <label id="nameLabel" for="registerName">Full Name</label>
+              <input type="text" id="registerName" required />
+            </div>
+            <div class="form-group">
+              <label id="registerEmailLabel" for="registerEmail">Campus Email</label>
+              <input type="email" id="registerEmail" required />
+            </div>
+            <div class="form-group">
+              <label id="registerPasswordLabel" for="registerPassword">Password</label>
+              <input type="password" id="registerPassword" required />
+            </div>
+            <div class="form-group">
+              <label id="collegeLabel" for="registerCollege">College</label>
+              <input type="text" id="registerCollege" required />
+            </div>
+            <div class="form-group">
+              <label id="pickupPrefLabel" for="pickupPreference">Preferred Zone</label>
+              <input type="text" id="pickupPreference" required />
+            </div>
+            <button class="btn-primary full-width mt-4" type="submit" id="registerSubmit">Create Account</button>
+          </form>
+          <p class="demo-note" id="authNote">Demo: Submitting returns to marketplace.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="overlay-fullscreen hidden-view" id="detailView">
+      <div class="fullscreen-nav">
+        <button class="btn-back view-back-button" type="button" data-close-view="detail">Back to Market</button>
+      </div>
+      <div class="detail-container">
+        <div class="detail-img-col">
+          <img id="detailImage" src="" alt="Product" class="img-fluid" />
+        </div>
+        <div class="detail-info-col">
+          <span class="detail-badge" id="detailEyebrow">Listing</span>
+          <h1 id="detailTitle">Loading...</h1>
+          <strong class="detail-price-huge" id="detailPrice"></strong>
+          <p class="detail-desc-full" id="detailDescription"></p>
+
+          <div class="info-grid">
+            <div class="info-item">
+              <span id="priceLabel">Price</span>
+              <strong id="detailPriceMirror"></strong>
+            </div>
+            <div class="info-item">
+              <span id="detailConditionLabel">Condition</span>
+              <strong id="detailCondition"></strong>
+            </div>
+            <div class="info-item">
+              <span id="locationLabel">Pickup</span>
+              <strong id="detailLocation"></strong>
+            </div>
+            <div class="info-item">
+              <span id="ratingLabel">Seller Rating</span>
+              <strong id="detailRating"></strong>
+            </div>
+          </div>
+
+          <div class="seller-inline">
+            <div class="seller-item">
+              <span id="sellerEyebrow">Seller</span>
+              <strong id="detailSeller"></strong>
+              <p id="sellerNote">Usually replies within a few hours and prefers on-campus handoff.</p>
+            </div>
+            <div class="seller-item">
+              <span id="tagsEyebrow">Tags</span>
+              <div class="detail-tags-wrap listing-tags" id="detailTags"></div>
+            </div>
+          </div>
+
+          <div class="action-bar-sticky">
+            <button class="btn-primary huge" id="detailCartButton" type="button">Add to Cart</button>
+            <button class="btn-secondary huge" id="chatSellerLink" type="button">Chat Seller</button>
+            <button class="btn-ghost huge" id="makeOfferLink" type="button">Make an Offer</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="overlay-fullscreen hidden-view" id="chatView">
+      <div class="fullscreen-nav">
+        <button class="btn-back view-back-button" type="button" data-close-view="chat">Back</button>
+      </div>
+      <div class="chat-container">
+        <aside class="chat-roster">
+          <p class="mini-label" id="chatEyebrow">Inbox</p>
+          <h2 id="chatTitle">Inbox</h2>
+          <div class="roster-list conversation-list" id="conversationList"></div>
+        </aside>
+        <main class="chat-window">
+          <div class="chat-header">
+            <p class="mini-label" id="threadEyebrow">Active Thread</p>
+            <h3 id="threadTitle">Loading...</h3>
+          </div>
+          <div class="chat-history message-thread" id="messageThread"></div>
+          <div class="chat-input-area">
+            <form id="chatComposer" class="composer-form chat-composer">
+              <label class="sr-only" id="composerLabel" for="composerInput">Message</label>
+              <input type="text" id="composerInput" placeholder="Type a message..." required autocomplete="off" />
+              <button class="btn-primary" type="submit" id="sendButton">Send</button>
+            </form>
+          </div>
+        </main>
+      </div>
+    </section>
+
+    <script src="./market-data.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
