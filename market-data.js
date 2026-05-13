@@ -3,29 +3,6 @@ window.marketData = {
   LANGUAGE_KEY: "cuhksz-remarket-language",
   initialListings: [
     {
-      id: 1,
-      title: "CSC1008 Notes + Past Papers Bundle",
-      titleZh: "CSC1008 笔记与历年卷套装",
-      category: "Textbooks",
-      categoryZh: "教材资料",
-      price: 65,
-      condition: "Like New",
-      conditionZh: "几乎全新",
-      seller: "Ada Li",
-      rating: 4.9,
-      location: "University Library",
-      locationZh: "大学图书馆",
-      badge: "Best Match",
-      badgeZh: "最佳匹配",
-      description:
-        "Clean and organized course notes with annotated past papers. Ideal for revision week and includes summary sheets.",
-      descriptionZh: "整理清晰的课程笔记和带标注的历年试卷，适合复习周使用，并附有总结提纲。",
-      tags: ["CSC1008", "Finals", "Bundle"],
-      tagsZh: ["CSC1008", "期末复习", "套装"],
-      image:
-        "https://cuhk.edu.cn/sites/webmaster.prod1.dpsite04.cuhk.edu.cn/files/styles/w500/public/2026-04/%E9%98%BF%E5%8D%A1%E8%B4%9D%E6%8B%89.jpg?itok=4Xxppr_i",
-    },
-    {
       id: 2,
       title: "iPad Air 5 with Pencil Case",
       titleZh: "iPad Air 5 含笔槽保护套",
