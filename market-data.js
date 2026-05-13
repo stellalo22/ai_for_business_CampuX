@@ -45,8 +45,7 @@ window.marketData = {
       descriptionZh: "使用一个学年，功能完好，附带充电器、保护套和记笔记应用账号交接。",
       tags: ["Tablet", "Notes", "Portable"],
       tagsZh: ["平板", "记笔记", "便携"],
-      image:
-        "https://cuhk.edu.cn/sites/webmaster.prod1.dpsite04.cuhk.edu.cn/files/styles/w500/public/2026-04/%E5%B0%81%E9%9D%A2_1_0.jpg?itok=lIubHR3P",
+      image: "./photo/iPad Air 5 含笔槽保护套.jpeg",
     },
     {
       id: 3,
@@ -68,8 +67,7 @@ window.marketData = {
       descriptionZh: "紧凑型台灯搭配可叠放收纳架，适合宿舍桌面，搬宿舍时也方便携带。",
       tags: ["Dorm", "Move-out", "Bundle"],
       tagsZh: ["宿舍", "搬宿舍", "套装"],
-      image:
-        "https://cuhk.edu.cn/sites/webmaster.prod1.dpsite04.cuhk.edu.cn/files/styles/w500/public/2026-04/image001_5.jpg?itok=JvDwiGVk",
+      image: "./photo/宿舍台灯与收纳架.png",
     },
     {
       id: 4,
@@ -91,8 +89,7 @@ window.marketData = {
       descriptionZh: "修身海军蓝西装外套，仅在展示时穿过两次，适合面试和正式活动。",
       tags: ["Interview", "Presentation", "Unisex"],
       tagsZh: ["面试", "展示", "中性款"],
-      image:
-        "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1200&q=80",
+      image: "./photo/展示周正式西装外套.webp",
     },
     {
       id: 5,
@@ -137,8 +134,7 @@ window.marketData = {
       descriptionZh: "只有前两章有少量划线，附有章节总结和便签定义，适合快速复习。",
       tags: ["ECO", "Textbook", "Annotated"],
       tagsZh: ["ECO", "教材", "有批注"],
-      image:
-        "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1200&q=80",
+      image: "./photo/微观经济学教材.jpeg",
     },
   ],
 };

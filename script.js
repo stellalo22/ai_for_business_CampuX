@@ -638,7 +638,11 @@ function renderListings() {
   filtered.forEach((item) => {
     const node = dom.listingTemplate.content.cloneNode(true);
     node.querySelector(".listing-badge").textContent = getListingText(item, "badge");
-    node.querySelector(".listing-visual").style.backgroundImage = createListingVisual(item);
+    const listingVisual = node.querySelector(".listing-visual");
+    const listingImage = getListingImage(item);
+    listingVisual.style.backgroundImage = listingImage
+      ? `linear-gradient(180deg, rgba(20, 12, 16, 0.14), rgba(20, 12, 16, 0.5)), url("${listingImage}")`
+      : createListingVisual(item);
     node.querySelector(".listing-category").textContent = getListingText(item, "category");
     node.querySelector(".listing-condition").textContent = getListingText(item, "condition");
     node.querySelector(".listing-title").textContent = getListingText(item, "title");
@@ -836,6 +840,13 @@ function applyAuthCopy() {
   document.getElementById("authNote").textContent = t("authNote");
 }
 
+function getListingImage(item) {
+  if (item.image && typeof item.image === "string") {
+    return item.image;
+  }
+  return "";
+}
+
 function setAuthTab(isLogin) {
   dom.loginTab.classList.toggle("active", isLogin);
   dom.registerTab.classList.toggle("active", !isLogin);
@@ -853,8 +864,9 @@ function openDetailView(id) {
 
 function renderDetailView() {
   const item = getListingById(activeDetailId);
+  const detailImage = getListingImage(item);
   document.getElementById("detailEyebrow").textContent = t("detailEyebrow");
-  dom.detailImage.src = createListingVisual(item).slice(5, -2);
+  dom.detailImage.src = detailImage || createListingVisual(item).slice(5, -2);
   dom.detailTitle.textContent = getListingText(item, "title");
   dom.detailDescription.textContent = getListingText(item, "description");
   document.getElementById("priceLabel").textContent = t("price");
