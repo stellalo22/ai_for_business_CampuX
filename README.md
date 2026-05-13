@@ -1,1 +1,1 @@
-# ai_for_business_CUHKSZ_remarket
+# ai_for_business_CampuX
